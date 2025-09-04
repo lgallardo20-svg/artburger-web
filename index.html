@@ -19,8 +19,8 @@
       justify-content: space-between;
       align-items: center;
     }
-    header h1 {
-      margin: 0;
+    header img {
+      height: 50px;
     }
     nav a {
       color: #fff;
@@ -28,14 +28,15 @@
       margin: 0 10px;
     }
     .hero {
-      background: url('https://source.unsplash.com/1600x600/?burger') center/cover no-repeat;
+      background: url('img/vacuno.jpg') center/cover no-repeat;
       color: #fff;
-      padding: 80px 20px;
+      padding: 100px 20px;
       text-align: center;
     }
     .hero h2 {
       font-size: 2.5em;
       margin-bottom: 20px;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
     }
     .btn {
       background: #e63946;
@@ -90,7 +91,7 @@
 </head>
 <body>
   <header>
-    <h1>ArtBurger</h1>
+    <img src="img/logo.png" alt="Logo ArtBurger">
     <nav>
       <a href="#menu">Menú</a>
       <a href="#delivery">Delivery</a>
@@ -116,14 +117,19 @@
     <h3>Nuestro Menú</h3>
     <div class="menu-items">
       <div class="menu-item">
-        <img src="https://source.unsplash.com/400x300/?beefburger" alt="Hamburguesa de Vacuno">
+        <img src="img/vacuno.jpg" alt="Hamburguesa de Vacuno">
         <h4>Vacuno Premium</h4>
         <p>Carne 100% de vacuno, pan artesanal y vegetales frescos.</p>
       </div>
       <div class="menu-item">
-        <img src="https://source.unsplash.com/400x300/?veggieburger" alt="Hamburguesa Vegana">
+        <img src="img/veggie.jpg" alt="Hamburguesa Vegana">
         <h4>Veggie Deluxe</h4>
         <p>Opción vegana con garbanzos, especias y todo el sabor.</p>
+      </div>
+      <div class="menu-item">
+        <img src="img/papas.jpg" alt="Papas fritas">
+        <h4>Papas rústicas</h4>
+        <p>Crocantes, doradas y perfectas para acompañar tu burger.</p>
       </div>
     </div>
   </section>
