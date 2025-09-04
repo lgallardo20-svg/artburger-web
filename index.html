@@ -22,6 +22,7 @@
   nav a:hover{color:var(--fg)}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:14px;border:1px solid var(--line);background:var(--fg);color:#0b0b0c;font-weight:700}
   .btn.secondary{background:transparent;color:var(--fg)}
+  .row{display:flex;gap:16px;flex-wrap:wrap}
   .grid{display:grid;gap:16px}
   .cols-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
   .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
@@ -37,14 +38,13 @@
   .hero{position:relative;isolation:isolate}
   .hero-bg{position:absolute;inset:0;opacity:.2;background:radial-gradient(1200px 500px at 20% 10%,#e63946 0%,transparent 60%), radial-gradient(900px 600px at 80% 30%,#16a34a 0%,transparent 60%)}
   .hero-content{position:relative;padding:80px 0 48px}
-  .row{display:flex;gap:16px;flex-wrap:wrap}
   .two-col{display:grid;gap:24px}
   @media(min-width:900px){.two-col{grid-template-columns:1.2fr 1fr}}
   footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:14px}
 
-  /* SVG cards */
-  .media{display:block;width:100%;height:190px;background:#0e0f11;border-bottom:1px solid var(--line)}
-  .center{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+  /* Media */
+  .media{width:100%;aspect-ratio:16/10;background:#0e0f11;border-bottom:1px solid var(--line)}
+  .media img{width:100%;height:100%;object-fit:cover;display:block}
 </style>
 </head>
 <body>
@@ -64,7 +64,6 @@
             <rect x="0" y="10" rx="6" width="64" height="12" fill="#f59e0b"/>
             <rect x="4" y="22" rx="6" width="56" height="10" fill="#b45309"/>
             <rect x="0" y="32" rx="6" width="64" height="12" fill="#f59e0b"/>
-            <!-- semillas -->
             <g fill="#fff" opacity=".9">
               <ellipse cx="12" cy="14" rx="2" ry="1.1"/>
               <ellipse cx="22" cy="12.5" rx="2" ry="1.1"/>
@@ -112,28 +111,9 @@
         <!-- Vacuno -->
         <article class="card">
           <div class="media">
-            <div class="center">
-              <!-- Burger vacuno (patty café) -->
-              <svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hamburguesa de vacuno">
-                <!-- pan arriba -->
-                <rect x="20" y="30" width="160" height="30" rx="12" fill="#f59e0b"/>
-                <!-- semillas -->
-                <g fill="#fff" opacity=".9">
-                  <ellipse cx="60" cy="40" rx="4" ry="2"/>
-                  <ellipse cx="90" cy="38" rx="4" ry="2"/>
-                  <ellipse cx="120" cy="41" rx="4" ry="2"/>
-                  <ellipse cx="145" cy="37" rx="4" ry="2"/>
-                </g>
-                <!-- lechuga -->
-                <rect x="25" y="60" width="150" height="10" rx="5" fill="#16a34a"/>
-                <!-- queso -->
-                <rect x="30" y="70" width="140" height="12" rx="4" fill="#fbbf24"/>
-                <!-- patty vacuno -->
-                <rect x="25" y="82" width="150" height="18" rx="6" fill="#7c2d12"/>
-                <!-- pan abajo -->
-                <rect x="20" y="100" width="160" height="26" rx="10" fill="#f59e0b"/>
-              </svg>
-            </div>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/f/f5/Hamburger_at_Social_Burgerjoint_in_Tampere_close_up.jpg"
+              alt="Hamburguesa de vacuno con queso y salsa">
           </div>
           <div class="body">
             <div class="title-row"><span>Clásica de la Casa</span><span class="price">$6.990</span></div>
@@ -150,28 +130,9 @@
         <!-- Vegana -->
         <article class="card">
           <div class="media">
-            <div class="center">
-              <!-- Burger vegana (patty verde + hoja) -->
-              <svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hamburguesa vegana">
-                <!-- pan arriba -->
-                <rect x="20" y="30" width="160" height="30" rx="12" fill="#f59e0b"/>
-                <!-- semillas -->
-                <g fill="#fff" opacity=".9">
-                  <ellipse cx="60" cy="40" rx="4" ry="2"/>
-                  <ellipse cx="90" cy="38" rx="4" ry="2"/>
-                  <ellipse cx="120" cy="41" rx="4" ry="2"/>
-                  <ellipse cx="145" cy="37" rx="4" ry="2"/>
-                </g>
-                <!-- tomate -->
-                <rect x="28" y="62" width="144" height="8" rx="4" fill="#dc2626"/>
-                <!-- patty vegetal -->
-                <rect x="25" y="72" width="150" height="18" rx="6" fill="#16a34a"/>
-                <!-- hoja -->
-                <path d="M60,78 C75,66 98,66 115,78 C100,92 75,92 60,78 Z" fill="#22c55e"/>
-                <!-- pan abajo -->
-                <rect x="20" y="92" width="160" height="26" rx="10" fill="#f59e0b"/>
-              </svg>
-            </div>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Veggie-Burger.JPG"
+              alt="Hamburguesa vegana con medallón vegetal, tomate y lechuga">
           </div>
           <div class="body">
             <div class="title-row"><span>Veggie Art 🌱</span><span class="price">$7.490</span></div>
@@ -188,20 +149,9 @@
         <!-- Papas -->
         <article class="card">
           <div class="media">
-            <div class="center">
-              <!-- Papas fritas -->
-              <svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Papas fritas">
-                <!-- caja -->
-                <path d="M50,60 L150,60 L140,115 C138,125 62,125 60,115 Z" fill="#dc2626"/>
-                <path d="M60,60 Q100,40 140,60" fill="none" stroke="#ef4444" stroke-width="6" />
-                <!-- papas -->
-                <rect x="60" y="38" width="12" height="30" fill="#fbbf24" />
-                <rect x="78" y="36" width="12" height="32" fill="#f59e0b" />
-                <rect x="96" y="34" width="12" height="34" fill="#fbbf24" />
-                <rect x="114" y="36" width="12" height="32" fill="#f59e0b" />
-                <rect x="132" y="38" width="12" height="30" fill="#fbbf24" />
-              </svg>
-            </div>
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/6/6c/French_Fries_%2853130820706%29.jpg"
+              alt="Papas fritas rústicas en plato blanco">
           </div>
           <div class="body">
             <div class="title-row"><span>Papas rústicas</span><span class="price">$2.990</span></div>
@@ -278,10 +228,18 @@
   <footer>
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
       <p>© <span id="year"></span> ArtBurger — 100% artesanal</p>
-      <div class="row">
+      <div class="row" style="gap:14px">
         <a href="mailto:contacto@artburger.cl" class="muted">contacto@artburger.cl</a>
         <a href="https://wa.me/56966322262" target="_blank" rel="noreferrer" class="muted">WhatsApp</a>
       </div>
+    </div>
+    <div class="container" style="margin-top:8px;font-size:12px">
+      <span class="muted">Créditos fotos:</span>
+      <ul class="muted" style="margin:6px 0 0; padding-left:18px; line-height:1.6">
+        <li>Veggie: “Veggie-Burger.JPG” — CC BY-SA 3.0 (Sujalajus, Wikimedia Commons)</li>
+        <li>Vacuno: “Hamburger at Social Burgerjoint…” — CC BY-SA 4.0 (JIP, Wikimedia Commons)</li>
+        <li>Papas: “French Fries (53130820706).jpg” — CC BY 2.0 (whitefield_d via Flickr, en Wikimedia Commons)</li>
+      </ul>
     </div>
   </footer>
 
@@ -294,7 +252,7 @@
       const msg = document.getElementById('msg').value || '';
       const subject = encodeURIComponent('Contacto desde la web - ' + name);
       const body = encodeURIComponent(msg + '\\n\\n— ' + name + ' (' + email + ')');
-      const to = 'contacto@artburger.cl';
+      const to = 'contacto@artburger.cl'; // <-- cámbialo si usas otro correo
       window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
     }
   </script>
