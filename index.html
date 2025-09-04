@@ -1,163 +1,302 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ArtBurger - Hamburguesas Artesanales</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fafafa;
-      color: #333;
-    }
-    header {
-      background: #000;
-      color: #fff;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    header img {
-      height: 50px;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 10px;
-    }
-    .hero {
-      background: url('img/vacuno.jpg') center/cover no-repeat;
-      color: #fff;
-      padding: 100px 20px;
-      text-align: center;
-    }
-    .hero h2 {
-      font-size: 2.5em;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-    }
-    .btn {
-      background: #e63946;
-      color: #fff;
-      padding: 12px 24px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .btn:hover {
-      background: #c72c38;
-    }
-    .btn.secundario {
-      background: #333;
-      margin-left: 10px;
-    }
-    section {
-      padding: 50px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h3 {
-      font-size: 2em;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-    .menu-items {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .menu-item {
-      background: #fff;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      text-align: center;
-    }
-    .menu-item img {
-      width: 100%;
-      border-radius: 10px;
-      margin-bottom: 10px;
-    }
-    footer {
-      background: #000;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ArtBurger — Hamburguesas Artesanales</title>
+<meta name="description" content="ArtBurger: hamburguesas artesanales — vacuno y veggie — solo delivery. Ingredientes reales, técnica cuidada y sabor inolvidable.">
+<style>
+  :root{
+    --bg:#0b0b0c; --fg:#f7f7f8; --muted:#a1a1aa; --card:#111214;
+    --brand:#e63946; --brand-2:#16a34a; --brand-3:#fbbf24; --line:#1f2023;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1100px;margin:0 auto;padding:0 16px}
+
+  header{position:sticky;top:0;z-index:30;background:rgba(11,11,12,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  nav a{font-size:14px;color:var(--muted)}
+  nav a:hover{color:var(--fg)}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:14px;border:1px solid var(--line);background:var(--fg);color:#0b0b0c;font-weight:700}
+  .btn.secondary{background:transparent;color:var(--fg)}
+  .grid{display:grid;gap:16px}
+  .cols-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .card .body{padding:16px}
+  .title-row{display:flex;align-items:center;justify-content:space-between;font-weight:800}
+  .price{font-weight:900;font-size:18px}
+  .pill{display:inline-block;font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:#0e0f11;margin-right:6px;margin-bottom:6px;color:var(--muted)}
+  .section{padding:56px 0}
+  h1{font-size:clamp(32px,5vw,56px);margin:6px 0 0}
+  h2{font-size:clamp(26px,4vw,36px);margin:0 0 8px}
+  h3{font-size:22px;margin:0 0 6px}
+  .muted{color:var(--muted)}
+  .hero{position:relative;isolation:isolate}
+  .hero-bg{position:absolute;inset:0;opacity:.2;background:radial-gradient(1200px 500px at 20% 10%,#e63946 0%,transparent 60%), radial-gradient(900px 600px at 80% 30%,#16a34a 0%,transparent 60%)}
+  .hero-content{position:relative;padding:80px 0 48px}
+  .row{display:flex;gap:16px;flex-wrap:wrap}
+  .two-col{display:grid;gap:24px}
+  @media(min-width:900px){.two-col{grid-template-columns:1.2fr 1fr}}
+  footer{border-top:1px solid var(--line);padding:22px 0;color:var(--muted);font-size:14px}
+
+  /* SVG cards */
+  .media{display:block;width:100%;height:190px;background:#0e0f11;border-bottom:1px solid var(--line)}
+  .center{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+</style>
 </head>
 <body>
+  <!-- NAV -->
   <header>
-    <img src="img/logo.png" alt="Logo ArtBurger">
-    <nav>
-      <a href="#menu">Menú</a>
-      <a href="#delivery">Delivery</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
+    <div class="container nav">
+      <!-- LOGO SVG -->
+      <a href="#" aria-label="Inicio">
+        <svg width="160" height="28" viewBox="0 0 320 56" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ArtBurger Logo">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="320" y2="0" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#e63946"/><stop offset=".5" stop-color="#fbbf24"/><stop offset="1" stop-color="#16a34a"/>
+            </linearGradient>
+          </defs>
+          <!-- icono burger -->
+          <g transform="translate(4,6)">
+            <rect x="0" y="10" rx="6" width="64" height="12" fill="#f59e0b"/>
+            <rect x="4" y="22" rx="6" width="56" height="10" fill="#b45309"/>
+            <rect x="0" y="32" rx="6" width="64" height="12" fill="#f59e0b"/>
+            <!-- semillas -->
+            <g fill="#fff" opacity=".9">
+              <ellipse cx="12" cy="14" rx="2" ry="1.1"/>
+              <ellipse cx="22" cy="12.5" rx="2" ry="1.1"/>
+              <ellipse cx="34" cy="13.5" rx="2" ry="1.1"/>
+              <ellipse cx="46" cy="12.8" rx="2" ry="1.1"/>
+              <ellipse cx="56" cy="14.2" rx="2" ry="1.1"/>
+            </g>
+          </g>
+          <!-- texto -->
+          <text x="82" y="20" fill="url(#g1)" font-size="18" font-weight="800" font-family="Inter,Segoe UI,Arial">ARTBURGER</text>
+          <text x="82" y="42" fill="#cbd5e1" font-size="12" font-family="Inter,Segoe UI,Arial">100% artesanal • vacuno & veggie</text>
+        </svg>
+      </a>
+      <nav>
+        <a href="#menu">Menú</a>
+        <a href="#delivery">Delivery</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <a class="btn" href="https://wa.me/56966322262?text=Hola%20Art%20Burger%2C%20quiero%20hacer%20un%20pedido." target="_blank" rel="noreferrer">Pedir</a>
+    </div>
   </header>
 
   <!-- HERO -->
   <section class="hero">
-    <h2>Hamburguesas que honran la tradición y miran al futuro</h2>
-    <div style="display:flex; justify-content:center; margin-top:20px;">
-      <a class="btn" 
-         href="https://wa.me/56966322262?text=Hola%20Art%20Burger%2C%20me%20gustar%C3%ADa%20hacer%20un%20pedido." 
-         target="_blank" rel="noreferrer">
-        Ordenar ahora
-      </a>
-      <a class="btn secundario" href="#menu">Ver menú</a>
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <p class="muted" style="letter-spacing:.14em;text-transform:uppercase;font-size:12px;">100% artesanal • local • con cariño</p>
+      <h1>Hamburguesas que honran la tradición y miran al futuro</h1>
+      <p class="muted" style="font-size:18px;max-width:720px">Veggie, vacuno y más. Ingredientes reales, técnica cuidada y sabor inolvidable.</p>
+      <div class="row" style="margin-top:14px">
+        <a class="btn" href="https://wa.me/56966322262?text=Hola%20Art%20Burger%2C%20me%20gustar%C3%ADa%20hacer%20un%20pedido." target="_blank" rel="noreferrer">Ordenar ahora</a>
+        <a class="btn secondary" href="#menu">Ver menú</a>
+      </div>
     </div>
   </section>
 
   <!-- MENÚ -->
-  <section id="menu">
-    <h3>Nuestro Menú</h3>
-    <div class="menu-items">
-      <div class="menu-item">
-        <img src="img/vacuno.jpg" alt="Hamburguesa de Vacuno">
-        <h4>Vacuno Premium</h4>
-        <p>Carne 100% de vacuno, pan artesanal y vegetales frescos.</p>
-      </div>
-      <div class="menu-item">
-        <img src="img/veggie.jpg" alt="Hamburguesa Vegana">
-        <h4>Veggie Deluxe</h4>
-        <p>Opción vegana con garbanzos, especias y todo el sabor.</p>
-      </div>
-      <div class="menu-item">
-        <img src="img/papas.jpg" alt="Papas fritas">
-        <h4>Papas rústicas</h4>
-        <p>Crocantes, doradas y perfectas para acompañar tu burger.</p>
+  <section id="menu" class="section">
+    <div class="container">
+      <p class="muted" style="letter-spacing:.2em;text-transform:uppercase;font-size:12px">Nuestro menú</p>
+      <h2>Clásicos artesanales y favoritos veggie</h2>
+      <p class="muted" style="margin:6px 0 18px">Porque la cocina de siempre puede (y debe) convivir con lo nuevo.</p>
+
+      <div class="grid cols-3">
+        <!-- Vacuno -->
+        <article class="card">
+          <div class="media">
+            <div class="center">
+              <!-- Burger vacuno (patty café) -->
+              <svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hamburguesa de vacuno">
+                <!-- pan arriba -->
+                <rect x="20" y="30" width="160" height="30" rx="12" fill="#f59e0b"/>
+                <!-- semillas -->
+                <g fill="#fff" opacity=".9">
+                  <ellipse cx="60" cy="40" rx="4" ry="2"/>
+                  <ellipse cx="90" cy="38" rx="4" ry="2"/>
+                  <ellipse cx="120" cy="41" rx="4" ry="2"/>
+                  <ellipse cx="145" cy="37" rx="4" ry="2"/>
+                </g>
+                <!-- lechuga -->
+                <rect x="25" y="60" width="150" height="10" rx="5" fill="#16a34a"/>
+                <!-- queso -->
+                <rect x="30" y="70" width="140" height="12" rx="4" fill="#fbbf24"/>
+                <!-- patty vacuno -->
+                <rect x="25" y="82" width="150" height="18" rx="6" fill="#7c2d12"/>
+                <!-- pan abajo -->
+                <rect x="20" y="100" width="160" height="26" rx="10" fill="#f59e0b"/>
+              </svg>
+            </div>
+          </div>
+          <div class="body">
+            <div class="title-row"><span>Clásica de la Casa</span><span class="price">$6.990</span></div>
+            <p class="muted">170g de vacuno, queso, pepinillos, lechuga y salsa de la casa.</p>
+            <div>
+              <span class="pill">Vacuno</span><span class="pill">Pan de papa</span><span class="pill">Salsa de la casa</span>
+            </div>
+            <div class="row" style="margin-top:10px">
+              <a class="btn" href="https://wa.me/56966322262?text=Hola%20Art%20Burger%2C%20quiero%20pedir%20la%20Cl%C3%A1sica%20de%20la%20Casa." target="_blank" rel="noreferrer">Pedir por WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Vegana -->
+        <article class="card">
+          <div class="media">
+            <div class="center">
+              <!-- Burger vegana (patty verde + hoja) -->
+              <svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hamburguesa vegana">
+                <!-- pan arriba -->
+                <rect x="20" y="30" width="160" height="30" rx="12" fill="#f59e0b"/>
+                <!-- semillas -->
+                <g fill="#fff" opacity=".9">
+                  <ellipse cx="60" cy="40" rx="4" ry="2"/>
+                  <ellipse cx="90" cy="38" rx="4" ry="2"/>
+                  <ellipse cx="120" cy="41" rx="4" ry="2"/>
+                  <ellipse cx="145" cy="37" rx="4" ry="2"/>
+                </g>
+                <!-- tomate -->
+                <rect x="28" y="62" width="144" height="8" rx="4" fill="#dc2626"/>
+                <!-- patty vegetal -->
+                <rect x="25" y="72" width="150" height="18" rx="6" fill="#16a34a"/>
+                <!-- hoja -->
+                <path d="M60,78 C75,66 98,66 115,78 C100,92 75,92 60,78 Z" fill="#22c55e"/>
+                <!-- pan abajo -->
+                <rect x="20" y="92" width="160" height="26" rx="10" fill="#f59e0b"/>
+              </svg>
+            </div>
+          </div>
+          <div class="body">
+            <div class="title-row"><span>Veggie Art 🌱</span><span class="price">$7.490</span></div>
+            <p class="muted">Medallón vegetal artesanal, palta, tomate, cebolla morada y mayo vegana.</p>
+            <div>
+              <span class="pill">Vegana</span><span class="pill">Sin lácteos</span><span class="pill">Artesanal</span>
+            </div>
+            <div class="row" style="margin-top:10px">
+              <a class="btn" href="https://wa.me/56966322262?text=Hola%20Art%20Burger%2C%20quiero%20pedir%20la%20Veggie%20Art." target="_blank" rel="noreferrer">Pedir por WhatsApp</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Papas -->
+        <article class="card">
+          <div class="media">
+            <div class="center">
+              <!-- Papas fritas -->
+              <svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Papas fritas">
+                <!-- caja -->
+                <path d="M50,60 L150,60 L140,115 C138,125 62,125 60,115 Z" fill="#dc2626"/>
+                <path d="M60,60 Q100,40 140,60" fill="none" stroke="#ef4444" stroke-width="6" />
+                <!-- papas -->
+                <rect x="60" y="38" width="12" height="30" fill="#fbbf24" />
+                <rect x="78" y="36" width="12" height="32" fill="#f59e0b" />
+                <rect x="96" y="34" width="12" height="34" fill="#fbbf24" />
+                <rect x="114" y="36" width="12" height="32" fill="#f59e0b" />
+                <rect x="132" y="38" width="12" height="30" fill="#fbbf24" />
+              </svg>
+            </div>
+          </div>
+          <div class="body">
+            <div class="title-row"><span>Papas rústicas</span><span class="price">$2.990</span></div>
+            <p class="muted">Corte grueso, doble cocción y toque de romero. Perfectas para compartir.</p>
+            <div>
+              <span class="pill">Acompañamiento</span><span class="pill">Para compartir</span>
+            </div>
+            <div class="row" style="margin-top:10px">
+              <a class="btn" href="https://wa.me/56966322262?text=Hola%20Art%20Burger%2C%20quiero%20pedir%20unas%20Papas%20r%C3%BAsticas." target="_blank" rel="noreferrer">Pedir por WhatsApp</a>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 
   <!-- DELIVERY -->
-  <section id="delivery">
-    <h3>Delivery (Cobertura & Horarios)</h3>
-    <p>📍 Zonas: Santiago Centro, Ñuñoa, Providencia</p>
-    <p>🕒 Horarios: Lunes a Sábado, 12:00 - 22:00</p>
-    <p>💳 Pago: Efectivo, Transferencia, Débito/Crédito</p>
-    <div style="text-align:center; margin-top:20px;">
-      <a class="btn"
-         href="https://wa.me/56966322262?text=Hola%20Art%20Burger%2C%20quiero%20informaci%C3%B3n%20del%20delivery." 
-         target="_blank" rel="noreferrer">
-        Pedir por WhatsApp
-      </a>
+  <section id="delivery" class="section" style="background:#0e0f11;border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+    <div class="container two-col">
+      <div class="card">
+        <div class="body">
+          <h3>Zonas de reparto</h3>
+          <p class="muted">Delivery en: Providencia, Ñuñoa, Santiago Centro, La Reina, Las Condes (zona oriente). Pedido mínimo $8.000.</p>
+          <div class="pill">5 km — $2.000</div>
+          <div class="pill">5–8 km — $3.000</div>
+          <div class="pill">+8 km — a convenir</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="body">
+          <h3>Horarios</h3>
+          <ul class="muted" style="padding-left:18px;line-height:1.9">
+            <li>Lun–Vie: 12:30 – 22:00 (solo delivery)</li>
+            <li>Sáb: 13:00 – 23:00</li>
+            <li>Dom: 13:00 – 21:00</li>
+          </ul>
+          <a class="btn" style="margin-top:10px" href="https://wa.me/56966322262?text=Hola%2C%20quiero%20coordinar%20un%20delivery." target="_blank" rel="noreferrer">Pedir por WhatsApp</a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CONTACTO -->
-  <section id="contacto">
-    <h3>Contacto</h3>
-    <p>Email: contacto@artburger.cl</p>
-    <p>Teléfono: +56 9 6632 2262</p>
+  <section id="contacto" class="section">
+    <div class="container two-col">
+      <div class="card">
+        <div class="body">
+          <h3>Escríbenos directo</h3>
+          <form onsubmit="sendMailto(event)" style="display:grid;gap:10px">
+            <input id="name" placeholder="Tu nombre" style="padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#0e0f11;color:var(--fg)">
+            <input id="email" type="email" placeholder="Tu correo" style="padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#0e0f11;color:var(--fg)">
+            <textarea id="msg" placeholder="Cuéntanos qué necesitas" rows="4" style="padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#0e0f11;color:var(--fg)"></textarea>
+            <div class="row">
+              <button class="btn" type="submit">Enviar</button>
+              <a class="btn secondary" href="https://wa.me/56966322262?text=Hola%2C%20vengo%20desde%20la%20web%20y%20me%20gustar%C3%ADa%20m%C3%A1s%20info." target="_blank" rel="noreferrer">WhatsApp</a>
+            </div>
+          </form>
+          <p class="muted" style="font-size:12px;margin-top:6px">*Reemplaza el correo en el script por el tuyo (contacto@artburger.cl).</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="body">
+          <h3>Suscríbete</h3>
+          <p class="muted">Recibe promos y novedades (sin spam, palabra de parrillero).</p>
+          <div class="row">
+            <input placeholder="tu@email.com" style="flex:1;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:#0e0f11;color:var(--fg)">
+            <button class="btn">Unirme</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
   <footer>
-    <p>© 2025 ArtBurger - Todos los derechos reservados</p>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <p>© <span id="year"></span> ArtBurger — 100% artesanal</p>
+      <div class="row">
+        <a href="mailto:contacto@artburger.cl" class="muted">contacto@artburger.cl</a>
+        <a href="https://wa.me/56966322262" target="_blank" rel="noreferrer" class="muted">WhatsApp</a>
+      </div>
+    </div>
   </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function sendMailto(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value || 'Sin nombre';
+      const email = document.getElementById('email').value || 'Sin correo';
+      const msg = document.getElementById('msg').value || '';
+      const subject = encodeURIComponent('Contacto desde la web - ' + name);
+      const body = encodeURIComponent(msg + '\\n\\n— ' + name + ' (' + email + ')');
+      const to = 'contacto@artburger.cl';
+      window.location.href = 'mailto:' + to + '?subject=' + subject + '&body=' + body;
+    }
+  </script>
 </body>
 </html>
